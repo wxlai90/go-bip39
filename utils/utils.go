@@ -10,8 +10,8 @@ import (
 	"github.com/wxlai90/go-bip39/consts"
 )
 
-func GenerateSeedEntropy() ([]byte, error) {
-	entropy := make([]byte, 256/8)
+func GenerateSeedEntropy(size int) ([]byte, error) {
+	entropy := make([]byte, size/8)
 	_, err := rand.Read(entropy)
 
 	if err != nil {

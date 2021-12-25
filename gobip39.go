@@ -1,14 +1,17 @@
-package main
+package gobip39
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/wxlai90/go-bip39/utils"
 )
 
-func main() {
-	entropy, err := utils.GenerateSeedEntropy()
+func GenerateMnemonic(size int) string {
+	return generate(size)
+}
+
+func generate(size int) string {
+	entropy, err := utils.GenerateSeedEntropy(size)
 	if err != nil {
 		log.Panicln(err)
 	}
@@ -19,5 +22,5 @@ func main() {
 
 	mnemonic := utils.ParseIntoMnemonic(bits)
 
-	fmt.Println(mnemonic)
+	return mnemonic
 }
